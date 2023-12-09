@@ -54,6 +54,9 @@ class Board:
         return self.board[square_rank_index(square)][square_file_index(square)]
 
     def reset(self):
+        for f in FILE_NAMES:
+            for r in RANK_NAMES:
+                self[f + r] = Piece.from_symbol('_')
         for f in range(8):
             self[chr(ord('a') + f) + '2'] = Piece.from_symbol('P')
             self[chr(ord('a') + f) + '7'] = Piece.from_symbol('p')
