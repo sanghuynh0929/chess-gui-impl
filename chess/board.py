@@ -173,6 +173,8 @@ class Board:
                     self.ep_square = Square(move.to_square.value[0] + '3')
                 else:
                     self.ep_square = Square(move.to_square.value[0] + '6')
+            elif move.promotion:
+                self[move.to_square] = Piece(move.promotion, Color(-self.turn.value))
             else:
                 if move.to_square == self.ep_square:
                     ep_rank = square_rank_index(self.ep_square)
@@ -348,6 +350,8 @@ class Board:
         for offset_rank, offset_file in capture_offsets:
             target_rank = rank + offset_rank
             target_file = file + offset_file
+            if is_valid_square(target_rank, target_file) and get_square(target_rank, target_file) == self.ep_square:
+                pawn_moves.append(Move(square, get_square(target_rank, target_file)))
             if (is_valid_square(target_rank, target_file) and not self.is_empty_square(get_square(target_rank, target_file)) and \
                     not self[square].color == self[get_square(target_rank, target_file)].color):
                 if (self.turn == Color.WHITE and rank == 6) or (self.turn == Color.BLACK and rank == 1):
@@ -356,13 +360,6 @@ class Board:
                         pawn_moves.append(Move(square, get_square(target_rank, target_file), promotion=piece_type))
                 else:
                     pawn_moves.append(Move(square, get_square(target_rank, target_file)))
-
-        if self.ep_square is not None:
-            ep_rank = square_rank_index(self.ep_square)
-            ep_file = square_file_index(self.ep_square)
-
-            if ep_rank == rank and abs(ep_file - file) == 1:
-                pawn_moves.append(Move(square, self.ep_square))
 
         return pawn_moves
 

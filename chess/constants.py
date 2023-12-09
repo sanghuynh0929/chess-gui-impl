@@ -23,7 +23,9 @@ class PieceType(Enum):
     QUEEN = 'q'
     KING = 'k'
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: Self | str) -> bool:
+        if isinstance(other, str):
+            return self.value == other
         return self.value == other.value
 
     def __ne__(self, other) -> bool:
