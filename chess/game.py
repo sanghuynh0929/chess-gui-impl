@@ -84,6 +84,6 @@ def piece_unicode(piece_type):
     return symbols[piece_type]
 
 
-if __name__ == "__main__":
+def start_game():
     chess_board = ChessBoard()
     chess_board.mainloop()
