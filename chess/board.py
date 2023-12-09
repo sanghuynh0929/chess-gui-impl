@@ -1,9 +1,9 @@
 from typing import Optional, Iterator, List
 from copy import deepcopy
 
-from moves import *
-from constants import *
-from pieces import *
+from .moves import *
+from .constants import *
+from .pieces import *
 
 STARTING_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 STARTING_BOARD_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"

@@ -7,9 +7,9 @@ else:
     from tkinter import *
     square_width = 1
     square_height = 1
-from pieces import *
-from constants import *
-from board import *
+from .pieces import *
+from .constants import *
+from .board import *
 
 
 class ChessButton(Button):

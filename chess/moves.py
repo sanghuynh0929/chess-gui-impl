@@ -1,8 +1,8 @@
 from typing import Optional, Self
 from dataclasses import dataclass
 
-from constants import *
-from errors import *
+from .constants import *
+from .errors import *
 
 
 @dataclass

@@ -3,7 +3,7 @@ import chess
 from dataclasses import dataclass
 from typing import Self
 
-from constants import *
+from .constants import *
 
 @dataclass
 class Piece:
